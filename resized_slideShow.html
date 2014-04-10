@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Resized Slideshow</title>
+
+        <style>
+        
+        body {
+        	margin: 0;
+        }
+
+
+        
+        </style>
+    </head>
+    <body>
+        <img id="image" src="images/1.jpg" alt="">
+        <script src="jquery-1.11.0.js"></script>
+        <script>
+        
+        var images = [
+            {
+                 src: 'images/1.jpg',
+                 width: 960,
+                 heigth: 640
+             }, {
+                 src: 'images/2.jpg',
+                 width: 960,
+                 height: 640
+             }, {
+                 src: 'images/3.jpg',
+                 width: 960,
+                 heigth: 640
+             }, {
+                 src: 'images/4.jpg',
+                 width: 960,
+                 heigth: 640
+             }, {
+                 src: 'images/5.jpg',
+                 width: 960,
+                 heigth: 640
+             }, {
+                 src: 'images/6.jpg',
+                 width: 960,
+                 heigth: 640
+             },
+        ]
+        
+
+        
+        var number = 0;
+        var max = images.length-1;
+        
+        
+        $('#image').click(function() {
+            number++;
+            if (number > max) {
+                number = 0;
+            }
+            var image =images[number];
+            this.src = image.src;
+        });
+        
+        
+        function resizeImage() {
+            var image = images[number];
+            var ratio = image.width / image.height;
+            var width = $(window).width();
+            var height = width / ratio;
+            $('#image').css('width', width);
+            $('#image').css('height', height);
+        }
+        
+        resizeImage(images);
+        
+        $(window).resize(resizeImage);
+        
+
+        
+        </script>
+    </body>
+</html>
